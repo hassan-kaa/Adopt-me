@@ -1,5 +1,5 @@
 import { Component } from "react";
-import useBreedList from "./useBreedList";
+import useBreedList from "../services/useBreedList";
 
 class Carousel extends Component {
   state = {
@@ -17,16 +17,16 @@ class Carousel extends Component {
     const { active } = this.state;
     const { images } = this.props;
     return (
-      <div className="carousel">
-        <img src={images[active]} alt="animal hero" />
-        <div className="carousel-smaller">
+      <div className="flex flex-col justify-center flex-nowrap items-center">
+        <img src={images[active]} alt="animal hero" className="rounded-full w-60 h-60" />
+        <div className="my-5 grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
           {images.map((photo, index) => (
             <img
               onClick={this.handleIndexClick}
               data-index={index}
               key={photo}
               src={photo}
-              className={index == active ? "active" : ""}
+              className={index == active ? "rounded-xl opacity-50 w-40 h-40 " : "rounded-xl w-40 h-40"}
               alt="animal thumbnail"
             />
           ))}
